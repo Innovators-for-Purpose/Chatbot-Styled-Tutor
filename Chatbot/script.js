@@ -25,9 +25,15 @@ const dialoguePatterns = [
         response: "CSS controls the styling of a webpage."
     },
     {
+        requiredWords: ["not"],
+        keywords: ["javascript", "js"],
+        response: "JavaScript isn't Java!"
+    },
+    {
         keywords: ["javascript", "js"],
         response: "JavaScript makes websites interactive!"
     }
+    
 ];
 
 const defaultResponse = "I'm not sure about that yet. Try another question!";
@@ -70,11 +76,25 @@ function getBotReply(input) {
     const lowerInput = input.toLowerCase();
 
     for (let pattern of dialoguePatterns) {
-        for (let word of pattern.keywords) {
-            if (lowerInput.includes(word)) {
-                return pattern.response;
-            }
+
+        let requiredMatch = true;
+        let keywordMatch = true;
+
+        if (pattern.requiredWords) {
+            requiredMatch = pattern.requiredWords.every(word =>
+                lowerInput.includes(word)
+            );
         }
+        if (pattern.keywords) {
+            keywordMatch = pattern.keywords.some(word =>
+                lowerInput.includes(word)
+                );
+                
+            }
+        if (requiredMatch && keywordMatch) {
+        return pattern.response;
+        }
+        
     }
 
     return defaultResponse;
