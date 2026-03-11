@@ -14,7 +14,37 @@
 const dialoguePatterns = [
     {
         keywords: ["hello", "hi"],
-        response: "Hello! What would you like to learn today?"
+        response: "Onè Respè I'm your Haitian guide tutor how may I help today?"
+    },
+    {
+        keywords: ["culture", "haitian"],
+        response: "What would you like to learn about the Haitian legacy?"
+    },
+    {
+        keywords: ["nation pride"],
+        response: "Haiti is the first Black-led republic in the world, born in 1804! Our motto, 'L’Union Fait la Force' (Unity Makes Strength), is the heartbeat of our heritage."
+    },
+    {
+        keywords: ["why"],
+        response: "Because it is a soul connected world and have access to be more intimate with your partener"
+
+    },
+    {
+        keywords: ["who"],
+        response: "The first Latin country who took their independence."
+    },
+    {
+        keywords: ["advice"],
+        response: "anvan ou monte bwa, gade si ou ka desann li. (Before you climb a tree, see if you can get down.) Think ahead before you start!"
+    },
+    {
+        keywords: ["art"],
+        response: "Our culture is a vibrant mix of African, French, and Taíno roots. From our world-renowned art to the heights of Citadelle Laferrière, there is so much to share!"
+    },
+    {
+        keywords:["important date"],
+        response: "some important dates in Haiti are:<br> their independance dates(January 1st,)<br> Flag days(May 18th,)"
+
     },
     {
         keywords: ["html"],

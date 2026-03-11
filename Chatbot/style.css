@@ -1,6 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-image: url(https://carlitoboricua.blog/wp-content/uploads/2024/12/hr-g-1.png?w=855);
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     margin-top: 50px;
@@ -8,7 +9,10 @@ body {
 
 .chat-container {
     width: 400px;
-    background: white;
+    background-image: url(https://features.diplomatmagazine.com/haitian-flag-day-celebration/assets/SM55q3OSrc/dreamstime_xl_97526862-2560x1706.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -19,18 +23,22 @@ body {
     overflow-y: auto;
     margin-bottom: 10px;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid black; 
 }
 
 .user-message {
+    display: block;
     text-align: right;
     margin: 5px 0;
+    color: blue;
+    background-color: greenyellow;
+    margin-left: auto;
+    width: fit-content;
 }
 
 .bot-message {
-    text-align: left;
-    margin: 5px 0;
-    color: #333;
+    color: red;
+    background-color: lightgreen;
 }
 
 .input-area {
