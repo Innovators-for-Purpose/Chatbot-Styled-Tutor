@@ -8,7 +8,7 @@ body {
 
 .chat-container {
     width: 400px;
-    background: white;
+    background: rgb(167, 167, 167);
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -19,18 +19,32 @@ body {
     overflow-y: auto;
     margin-bottom: 10px;
     padding: 10px;
-    border: 1px solid #ddd;
+    background-color: #f4f4f4;
+    border:1.5px solid #ddd;
+    border-radius: 10px;
 }
 
 .user-message {
-    text-align: right;
+    display: block;
     margin: 5px 0;
+    background-color: rgb(6, 199, 9);
+    color: white;
+    border-radius: 5px;
+    padding: 2px;
+    text-align: right;
+    margin-left: auto;
+    width: fit-content;
 }
 
 .bot-message {
     text-align: left;
     margin: 5px 0;
-    color: #333;
+    color: #ffffff;
+    display: block;
+    background-color: blue;
+    border-radius: 5px;
+    padding: 2px;
+    width: fit-content;
 }
 
 .input-area {
@@ -41,4 +55,9 @@ body {
 input {
     flex: 1;
     padding: 5px;
+    border-radius: 5px;
+}
+
+button {
+    border-radius: 5px;
 }
