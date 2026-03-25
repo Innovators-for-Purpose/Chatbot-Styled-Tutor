@@ -27,11 +27,11 @@ const dialoguePatterns = [
     {
         requiredWords: ["not"],
         keywords: ["javascript", "js"],
-        response: "JavaScript isn't Java!"
+        response: "Java isn't Javascript!"
     },
     {
         keywords: ["javascript", "js"],
-        response: "JavaScript makes websites interactive!"
+        response: "<br>•JavaScript makes websites interactive!!<br>•It is useful for making interactive webpages"
     }
     
 ];
@@ -74,6 +74,18 @@ function addMessage(sender, text, className) {
 
 function getBotReply(input) {
     const lowerInput = input.toLowerCase();
+
+    if (lowerInput.includes("calculate") || lowerInput.includes("what is")) {
+        let expression = lowerInput.replace(/(calculate|what is|\s)/g, '');
+        
+        try {
+            let result = new Function('return ' + expression)();
+            return "The result is " + result;
+        } catch (e) {
+            return "I couldn't calculate that. Please use numbers and +,-,*,/.";
+        }
+    }
+
 
     for (let pattern of dialoguePatterns) {
 
