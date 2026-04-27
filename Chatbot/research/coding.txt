@@ -1,0 +1,5 @@
+HTML stands for HyperText Markup Language.
+HTML structures content on webpages.
+CSS stands for Cascading Style Sheets.
+CSS controls layout, colors, and fonts.
+CSS can use selectors like classes and IDs.

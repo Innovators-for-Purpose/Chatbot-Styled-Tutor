@@ -39,13 +39,22 @@ const dialoguePatterns = [
 const defaultResponse = "I'm not sure about that yet. Try another question!";
 
 
+const researchNotes = `
+HTML uses tags to structure webpages.
+CSS controls styling and layout.
+JavaScript makes webpages interactive.
+`;
+
+
 // ===============================
 // CORE LOGIC (DO NOT EDIT THIS WITHOUT PERMISSION)
 // This logic is what allows the bot to function and communicate with you.
 // If you have any questions about the logic, and how to expand it, please ask and we can come up with ideas.
 // ===============================
 
-function sendMessage() {
+
+
+async function sendMessage() {
     const inputElement = document.getElementById("userInput");
     const messages = document.getElementById("messages");
     const userText = inputElement.value.trim();
@@ -54,7 +63,7 @@ function sendMessage() {
 
     addMessage("You", userText, "user-message");
 
-    const botReply = getBotReply(userText);
+    const botReply = await getBotReply(userText);
 
     setTimeout(() => {
         addMessage("Tutor", botReply, "bot-message");
@@ -72,11 +81,11 @@ function addMessage(sender, text, className) {
     messages.appendChild(message);
 }
 
-function getBotReply(input) {
+async function getBotReply(input) {
     const lowerInput = input.toLowerCase();
 
-    if (lowerInput.includes("calculate") || lowerInput.includes("what is")) {
-        let expression = lowerInput.replace(/(calculate|what is|\s)/g, '');
+    if (lowerInput.includes("calculate")) {
+        let expression = lowerInput.replace(/calculate/gi, "").trim();
         
         try {
             let result = new Function('return ' + expression)();
@@ -104,13 +113,57 @@ function getBotReply(input) {
                 
             }
         if (requiredMatch && keywordMatch) {
-        return pattern.response;
-        }
-        
+            if (!input.includes("?")) {
+                return pattern.response;
+            }
+            const aiResponse = await askAI(input);
+            return pattern.response + "<br><br><em>AI:</em> " + aiResponse;
+            }
     }
-
-    return defaultResponse;
+    //return defaultResponse;
+    return await askAI(input)
 }
+
+
+async function askAI(question) {
+    const response = await fetch("/ai-question", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ question })
+    });
+
+    const data = await response.json();
+    return data.reply;
+}
+
+// async function main() {
+//     const completion = await openai.chat.completions.create({
+//       model: "gpt-4o",
+//      messages: [
+//        { role: "system", content: "You are a simple chatbot that answers questions based on the specific subjects." },
+//         { role: "user", content: "Write a haiku about programming." },
+//       ],
+//     });
+  
+//     console.log(completion.choices[0].message.content);
+//   }
+  
+//   main();
+
+
+// async function getAIresponse(keyword) {
+//     const completion = await openai.chat.completions.create({
+//         model: "gpt-4o",
+//         instructions:"generate a response based on keywords",
+//         input: keywords,
+//     });
+//     console.log("AI Response:", response.output_text);
+// }
+// getAIResponse("JavaScript, API, integration");
+
+
 
 function handleKey(event) {
     if (event.key === "Enter") {
