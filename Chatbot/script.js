@@ -12,18 +12,21 @@
 // ===============================
 // Haiti Tutor Chatbot - Keyword Based System
 
+const { response } = require("express");
+
 const dialoguePatterns = [
     // 👋 Greetings
     {
       keywords: ["hello", "hi", "hey"],
       response: "Onè Respè 🇭🇹 I'm your Haitian legacy tutor. How can I help you today?"
     },
+    {
+      keywords: ["about"],
+      response: "This chattbot is about History and Geographica content "
+    },
   
     // 🌍 Basic Info
-    {
-      keywords: ["haiti", "country"],
-      response: "Haiti is a country in the Caribbean. It shares the island of Hispaniola with the Dominican Republic."
-    },
+    
     {
       keywords: ["capital", "city"],
       response: "The capital of Haiti is Port-au-Prince."
@@ -53,6 +56,10 @@ const dialoguePatterns = [
       response: "Jovenel Moïse was Haiti’s 43rd president, serving from 2017 until his assassination in 2021. Since then, Haiti has been in a political transition."
     },
     {
+      keywords: ["first"],
+      response: "Jean-Jacque Dessalines was the first president of Haiti"
+    } ,
+    {
       keywords: ["leader", "government"],
       response: "Haiti is currently led by a transitional government while working toward stability and future elections."
     },
@@ -65,14 +72,6 @@ const dialoguePatterns = [
     {
       keywords: ["revolution"],
       response: "The Haitian Revolution (1791-1804) was a successful slave revolt where enslaved people fought for and won their freedom."
-    },
-    {
-      keywords: ["importance", "significance"],
-      response:
-        "The Haitian Revolution was important because:<br>" +
-        "- It created the first independent Black republic in 1804.<br>" +
-        "- It was the only successful slave revolt to form a nation.<br>" +
-        "- It inspired movements against slavery worldwide."
     },
     {
         requiredWords: ["haiti"], 
@@ -266,12 +265,12 @@ async function getBotReply(input) {
 
         if (pattern.requiredWords) {
             requiredMatch = pattern.requiredWords.every(word =>
-                lowerInput.includes(word)
+                lowerInput.includes(word.toLowerCase())
             );
         }
         if (pattern.keywords) {
             keywordMatch = pattern.keywords.some(word =>
-                lowerInput.includes(word)
+                lowerInput.includes(word.toLowerCase())
                 );
                 
             }

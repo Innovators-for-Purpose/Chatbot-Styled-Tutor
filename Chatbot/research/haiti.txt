@@ -1,0 +1,10 @@
+keywords: ["importance", "significance"],
+      response:
+        "The Haitian Revolution was important because:<br>" +
+        "- It created the first independent Black republic in 1804.<br>" +
+        "- It was the only successful slave revolt to form a nation.<br>" +
+        "- It inspired movements against slavery worldwide."
+        keywords: ["haiti", "country"],
+        
+      response: "Haiti is a country in the Caribbean. It shares the island of Hispaniola with the Dominican Republic."
+    
