@@ -14,14 +14,14 @@
 const dialoguePatterns = [
     {
         keywords: ["hello", "hi"],
-        response: "Hello! What would you like to learn today?"
+        response: "Hello! Ask a question about me, Eclipse leaf?"
     },
     {
-        keywords: ["html"],
-        response: "HTML is used to structure content on a webpage."
+        keywords: ["Who?"],
+        response: "Eclipse leaf is a worker for IFP."
     },
     {
-        keywords: ["css"],
+        keywords: ["SSS"],
         response: "CSS controls the styling of a webpage."
     },
     {
